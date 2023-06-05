@@ -1,0 +1,43 @@
+/* .js body {
+  display: none;
+} */
+
+
+
+body {
+  background-image: url(../files/background-img.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  overflow-x: hidden;
+}
+
+/* footer content */
+.footer-content {
+  margin-top: 1.3em;
+  width: 100%;
+}
+
+
+
+
+
+@media (min-width: 768px) {
+
+  .footer-content {
+      margin-top: 0em;
+  }
+}
+
+/* @media (min-width: 1000px) {
+
+  .footer-content {
+      margin-top: 3.3em;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .footer-content {
+      margin-top: 0em;
+  }
+} */
