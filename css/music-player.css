@@ -9,7 +9,7 @@
     position: relative;
     margin-top: 40px;
     z-index: 10;
-    width: 95%;
+    max-width: 95%;
 }
 
 .music-player:hover {
