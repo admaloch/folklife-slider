@@ -83,9 +83,38 @@
     height: 40px;
 }
 
+@media (min-width: 390px) {
+    .action-btn {
+        font-size: 15px;
+    }
 
+    .music-info h4 {
+        margin: 0;
+        font-size: .9rem;
+    }
 
+}
 
+@media (min-width: 600px) {
+    .action-btn {
+        font-size: 21px;
+    }
+
+    .music-player {
+       
+        padding: 8px 20px;
+
+    }
+
+    .music-info {
+        padding: 5px;
+    }
+
+    .music-info h4 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+}
 
 @media (min-width: 768px) {
     .action-btn {
