@@ -8,12 +8,8 @@ const testScreenSize = () => {
   return size
 }
 
-var version = 10;
-
-// var imageSize = 75 + (version * 12) - 24;
-// $('#image img').width(imageSize);
-
 function makeQR(value) {
+  var version = 10;
   qrcode.qrcode.stringToBytes = qrcode.qrcode.stringToBytesFuncs['UTF-8']
   var qr = qrcode.qrcode(version, 'H');
   qr.addData(value);
@@ -27,6 +23,7 @@ function makeQR(value) {
 }
 
 function makeQArt(value, imagePath) {
+  var version = 10;
   const qrSize = testScreenSize()
   new QArt({
     value: value,
@@ -34,32 +31,37 @@ function makeQArt(value, imagePath) {
     filter: 'color',
     version: version,
     size: qrSize,
-    fillType: 'fill'
+    fillType: 'scale_to_fit'
   }).make(document.getElementById('combine'));
 }
 
-// function runs on carousel slide change to update qr code to new image
-$('#carouselExampleControls').on('slide.bs.carousel', function onSlide(ev) {
-  let currItem = ev.relatedTarget
-  let id = currItem.id;
-  let qrValue = `https://www.floridamemory.com/items/show/${id}`
-  let qrImagePath = currItem.children[1].src;
-  let mobileInfoLink = document.querySelector('#mobile-info-link')
+const updateQr = (item) => {
+  $("#combine").fadeOut(750);
+  const id = item.id;
+  const qrValue = `https://www.floridamemory.com/items/show/${id}`
+  const qrImagePath = item.children[1].src;
+  const mobileInfoLink = document.querySelector('#mobile-info-link')
   mobileInfoLink.href = qrValue
   setTimeout(() => {
     makeQR(qrValue);
     makeQArt(qrValue, qrImagePath)
-  }, 1000);
+
+  }, 750);
+  $("#combine").fadeIn(900);
+}
+
+// function runs on carousel slide change to update qr code to new image
+$('#carouselExampleControls').on('slide.bs.carousel', function onSlide(ev) {
+  const currItem = ev.relatedTarget
+
+  updateQr(currItem)
+
 });
 
 // set qr code on page load for initial image
-const carouselItem = document.querySelector('.active')
-const id = carouselItem.id
-let qrValue = `https://www.floridamemory.com/items/show/${id}`
-const qrImagePath = carouselItem.children[1].src
-makeQR(qrValue);
-makeQArt(qrValue, qrImagePath);
+const initialItem = document.querySelector('.active')
 
+updateQr(initialItem)
 
 
 

@@ -1,5 +1,5 @@
 .music-player {
-    opacity: .5;
+    opacity: .2;
     transition: opacity .3s ease-in-out;
     background-color: #fff;
     border-radius: 15px;
